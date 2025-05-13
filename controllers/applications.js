@@ -37,6 +37,14 @@ router.get('/:id', (req, res) => {
   res.render('applications/show.ejs', { app });
 });
 
+// Delete route/action
+// DELETE /applications/:id
+router.delete('/:id', async (req, res) => {
+  req.user.applications.remove(req.params.id);
+  await req.user.save();
+  res.redirect('/applications');
+});
+
 
 module.exports = router;
 
