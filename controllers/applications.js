@@ -16,7 +16,11 @@ router.get('/', async (req, res) => {
   res.render('applications/index.ejs');
 });
 
-
+// new route/action
+// GET /applications/new
+router.get('/new', (req, res) => {
+  res.render('applications/new.ejs');
+});
 
 
 // GET /applications/new

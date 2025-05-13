@@ -1,0 +1,30 @@
+<%- include('../partials/header.ejs') %>
+
+    <h1>Add New Applications</h1>
+
+    <form action="" method="POST">
+        <label for="company">Company:</label>
+        <input type="text" name="company" id="company" />
+
+        <label for="title">Title:</label>
+        <input type="text" name="title" id="title" />
+
+        <label for="notes">Notes:</label>
+        <textarea name="notes" id="notes">Initial Info</textarea>
+
+        <label for="postingLink">Posting Link:</label>
+        <input type="url" name="postingLink" id="postingLink" />
+
+        <label for="status">Status:</label>
+        <select id="status" name="status">
+            <option selected value="interested">Interested</option>
+            <option value="applied">Applied</option>
+            <option value="interviewing">Interviewing</option>
+            <option value="rejected">Rejected</option>
+            <option value="accepted">Accepted</option>
+        </select>
+        <button type="submit">ADD APPLICATION</button>
+    </form>
+
+
+    <%- include('../partials/footer.ejs') %>
