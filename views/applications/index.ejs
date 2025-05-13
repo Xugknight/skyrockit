@@ -4,7 +4,9 @@
 
 <% if (user.applications.length) { %>
     <% user.applications.forEach((app) => { %>
-
+        <article>
+            <h2><%= app.company %></h2>
+        </article>
     <%  }); %>
 <% } else { %>
     <p>You Don't Have Any Applications Yet.</p>
