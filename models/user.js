@@ -1,6 +1,30 @@
+const { application } = require("express");
 const mongoose = require("mongoose");
 // shortcut variable
 const Schema = mongoose.Schema;
+
+const applicationSchema = new Schema({
+  company: {
+    type: String,
+    required: true,
+  },
+  title: {
+    type: String,
+    required: true,
+  },
+  notes: {
+    type: String,
+  },
+  postingLink: {
+    type: String,
+  },
+  status: {
+    type: String,
+    required: true,
+    enum: ['interested', 'applied', 'interviewing', 'rejected', 'accepted']
+  },
+
+});
 
 const userSchema = new Schema({
   email: {
@@ -16,6 +40,7 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  applications: [applicationSchema]
 }, {
   // Mongoose will maintain a createdAt & updatedAt property
   timestamps: true
