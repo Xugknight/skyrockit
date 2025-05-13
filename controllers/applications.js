@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const User = require('../models/user')
 
 // Middleware used to protect routes that need a logged in user
 const ensureLoggedIn = require('../middleware/ensure-logged-in');
@@ -47,8 +48,11 @@ router.delete('/:id', async (req, res) => {
 
 // Edit route/action
 // GET /applications/:id/edit
-
-
+router.get('/:id/edit', (req, res) => {
+  const app = req.user.applications.id(req.params.id);
+  const statuses = User.schema.path('applications').schema.path('status').enumValues;
+  res.render('applications/edit.ejs', { app, statuses });
+});
 
 module.exports = router;
 
