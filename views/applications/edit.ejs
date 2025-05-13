@@ -2,7 +2,7 @@
 
 <h1>Edit App</h1>
 
-<form action="/applications" method="POST">
+<form action="/applications/<%= app._id %>?_method=PUT" method="POST">
   <label for="company">Company:</label>
   <input type="text" name="company" id="company" value="<%= app.company %>" />
 
@@ -19,7 +19,7 @@
   <select id="status" name="status" >
     <% statuses.forEach((status) => { %>
       <option value="<%= status %>" <%= status === app.status ? 'selected' : '' %> >
-        <%= status[0].toUpperCase() + status.slice(1) %>
+        <%= status.charAt(0).toUpperCase() + status.slice(1) %>
       </option>
     <% }) %>
   </select>

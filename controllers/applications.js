@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../models/user')
+const User = require('../models/user');
 
 // Middleware used to protect routes that need a logged in user
 const ensureLoggedIn = require('../middleware/ensure-logged-in');
@@ -10,19 +10,19 @@ router.use(ensureLoggedIn);
 
 // ALL paths start with '/applications'
 
-// Index action
+// index action
 // GET /applications
 router.get('/', async (req, res) => {
   res.render('applications/index.ejs');
 });
 
-// New route/action
+// new route/action
 // GET /applications/new
 router.get('/new', (req, res) => {
   res.render('applications/new.ejs');
 });
 
-// Create route/action
+// create route/action
 // POST /applications
 router.post('/', async (req, res) => {
   // req.user is the logged in user's document
@@ -31,14 +31,14 @@ router.post('/', async (req, res) => {
   res.redirect('/applications');
 });
 
-// Show route/action
+// show route/action
 // GET /applications/:id
 router.get('/:id', (req, res) => {
   const app = req.user.applications.id(req.params.id);
   res.render('applications/show.ejs', { app });
 });
 
-// Delete route/action
+// delete route/action
 // DELETE /applications/:id
 router.delete('/:id', async (req, res) => {
   req.user.applications.remove(req.params.id);
@@ -46,12 +46,21 @@ router.delete('/:id', async (req, res) => {
   res.redirect('/applications');
 });
 
-// Edit route/action
+// edit route/action
 // GET /applications/:id/edit
 router.get('/:id/edit', (req, res) => {
   const app = req.user.applications.id(req.params.id);
   const statuses = User.schema.path('applications').schema.path('status').enumValues;
   res.render('applications/edit.ejs', { app, statuses });
+});
+
+// update route/action
+// PUT /applications/:id
+router.put('/:id', async (req, res) => {
+  const app = req.user.applications.id(req.params.id);
+  Object.assign(app, req.body);
+  await req.user.save();
+  res.redirect(`/applications/${app._id}`);
 });
 
 module.exports = router;
