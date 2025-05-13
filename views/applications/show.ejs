@@ -1,0 +1,15 @@
+<%- include('../partials/header.ejs') %>
+
+<h1><%= app.title %> at <%= app.company %></h1>
+
+    <% if (app.notes) { %>
+            <p>Notes: <%= app.notes %></p>
+    <% } %> 
+    
+    <% if (app.postingLink) { %>
+        <a target="_blank" href="<%= app.postingLink %>">View job posting</a>
+    <% } %>
+    
+    <p>Current Status: <%= app.status %></p>
+
+<%- include('../partials/footer.ejs') %>

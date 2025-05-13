@@ -9,25 +9,32 @@ router.use(ensureLoggedIn);
 
 // ALL paths start with '/applications'
 
-// index action
+// Index action
 // GET /applications
 router.get('/', async (req, res) => {
   res.render('applications/index.ejs');
 });
 
-// new route/action
+// New route/action
 // GET /applications/new
 router.get('/new', (req, res) => {
   res.render('applications/new.ejs');
 });
 
-// create route/action
+// Create route/action
 // POST /applications
 router.post('/', async (req, res) => {
   // req.user is the logged in user's document
   req.user.applications.push(req.body);
   await req.user.save();
   res.redirect('/applications');
+});
+
+// Show route/action
+// GET /applications/:id
+router.get('/:id', (req, res) => {
+  const app = req.user.applications.id(req.params.id);
+  res.render('applications/show.ejs', { app });
 });
 
 

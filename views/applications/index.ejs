@@ -3,11 +3,11 @@
 <h1>Your Applications</h1>
 
 <% if (user.applications.length) { %>
-    <% user.applications.forEach((app) => { %>
-        <article>
-            <h2><%= app.company %></h2>
-        </article>
-    <%  }); %>
+    <ul>
+        <% user.applications.forEach((app) => { %>
+            <li><a href="/applications/<%= app._id %>"><%= app.title %> at <%= app.company %></a></li>       
+        <%  }); %>
+    </ul>
 <% } else { %>
     <p>You Don't Have Any Applications Yet.</p>
 <% }; %>
