@@ -10,7 +10,7 @@
   <a target="_blank" href="<%= app.postingLink %>">View job posting</a>
 <% } %>
 
-<p>Current Status: <%= app.status %></p>
+<p>Current Status: <%= app.status.toUpperCase() %></p>
 
 <form action="/applications/<%= app._id %>?_method=DELETE" method="POST">
   <button type="submit">🗑️</button>

@@ -45,6 +45,10 @@ router.delete('/:id', async (req, res) => {
   res.redirect('/applications');
 });
 
+// Edit route/action
+// GET /applications/:id/edit
+
+
 
 module.exports = router;
 
