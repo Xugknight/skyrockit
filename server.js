@@ -55,7 +55,7 @@ app.get('/', (req, res) => {
 // appended to the "starts with" path
 app.use('/auth', require('./controllers/auth'));
 
-// Update the unicorns data resource with your "main" resource
+// Mount/include the routes defined within controllers/applications
 app.use('/applications', require('./controllers/applications'));
 
 

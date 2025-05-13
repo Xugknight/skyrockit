@@ -1,0 +1,13 @@
+<%- include('../partials/header.ejs') %>
+
+<h1>Your Apps</h1>
+
+<% if (user.applications.length) { %>
+    <% user.applications.forEach((app) => { %>
+
+    <%  }); %>
+<% } else { %>
+    <p>You Don't Have Any Applications Yet.</p>
+<% }; %>
+
+<%- include('../partials/footer.ejs') %>
